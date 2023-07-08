@@ -29,7 +29,7 @@ from FallenMusic import BOT_NAME, app
 
 
 @app.on_message(
-    filters.command(["الفارات", "variables"]) & filters.user(config.OWNER_ID)
+    filters.command(["config", "variables"]) | filters.command(["الحاجات","الفارات","الايبهات","كونفنج"],prefixes= ["/", "!","","#"]) & filters.user(config.OWNER_ID)
 )
 async def get_vars(_, message: Message):
     try:
@@ -37,25 +37,25 @@ async def get_vars(_, message: Message):
             chat_id=int(config.OWNER_ID),
             text=f"""<u>**{BOT_NAME} ᴄᴏɴғɪɢ ᴠᴀʀɪᴀʙʟᴇs :**</u>
 
-**ᴀᴘɪ_ɪᴅ :** `{config.API_ID}`
-**ᴀᴘɪ_ʜᴀsʜ :** `{config.API_HASH}`
+**ايبي ايدي :** `{config.API_ID}`
+**ايبي هاش :** `{config.API_HASH}`
 
-**ʙᴏᴛ_ᴛᴏᴋᴇɴ :** `{config.BOT_TOKEN}`
-**ᴅᴜʀᴀᴛɪᴏɴ_ʟɪᴍɪᴛ :** `{config.DURATION_LIMIT}`
+**توكن البوت :** `{config.BOT_TOKEN}`
+**حد المدة :** `{config.DURATION_LIMIT}`
 
-**ᴏᴡɴᴇʀ_ɪᴅ :** `{config.OWNER_ID}`
-**sᴜᴅᴏ_ᴜsᴇʀs :** `{config.SUDO_USERS}`
+**ايدي المالك :** `{config.OWNER_ID}`
+**سودو يوزر :** `{config.SUDO_USERS}`
 
-**ᴘɪɴɢ_ɪᴍɢ :** `{config.PING_IMG}`
-**sᴛᴀʀᴛ_ɪᴍɢ :** `{config.START_IMG}`
-**sᴜᴘᴘᴏʀᴛ_ᴄʜᴀᴛ :** `{config.SUPPORT_CHAT}`
+**بنج :** `{config.PING_IMG}`
+**بدأ :** `{config.START_IMG}`
+**جروب الدعم :** `{config.SUPPORT_CHAT}`
 
-**sᴇssɪᴏɴ :** `{config.SESSION}`""",
+**الجلسة :** `{config.SESSION}`""",
             disable_web_page_preview=True,
         )
     except:
-        return await message.reply_text("» ғᴀɪʟᴇᴅ ᴛᴏ sᴇɴᴅ ᴛʜᴇ ᴄᴏɴғɪɢ ᴠᴀʀɪᴀʙʟᴇs.")
+        return await message.reply_text("⎊ فشل في إرسال متغيرات التكوين .")
     if message.chat.type != ChatType.PRIVATE:
         await message.reply_text(
-            "» ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘᴍ, ɪ'ᴠᴇ sᴇɴᴛ ᴛʜᴇ ᴄᴏɴғɪɢ ᴠᴀʀɪᴀʙʟᴇs ᴛʜᴇʀᴇ."
+            "⎊ ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴘᴍ, ɪ'ᴠᴇ sᴇɴᴛ ᴛʜᴇ ᴄᴏɴғɪɢ ᴠᴀʀɪᴀʙʟᴇs ᴛʜᴇʀᴇ."
         )

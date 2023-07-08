@@ -31,14 +31,14 @@ from FallenMusic.Helpers import gp_buttons, pm_buttons
 from FallenMusic.Helpers.dossier import *
 
 
-@app.on_message(filters.command(["start"]) & ~filters.forwarded)
+@app.on_message(filters.command(["start","help"]) | filters.command(["الاوامر","اوامر"],prefixes= ["/", "!","","#"]) & ~filters.forwarded)
 @app.on_edited_message(filters.command(["start"]) & ~filters.forwarded)
 async def fallen_st(_, message: Message):
     if message.chat.type == ChatType.PRIVATE:
         if len(message.text.split()) > 1:
             cmd = message.text.split(None, 1)[1]
             if cmd[0:3] == "inf":
-                m = await message.reply_text("🔎")
+                m = await message.reply_text("⚡")
                 query = (str(cmd)).replace("info_", "", 1)
                 query = f"https://www.youtube.com/watch?v={query}"
                 results = VideosSearch(query, limit=1)
@@ -52,23 +52,25 @@ async def fallen_st(_, message: Message):
                     link = result["link"]
                     published = result["publishedTime"]
                 searched_text = f"""
-➻ **ᴛʀᴀᴄᴋ ɪɴғᴏʀɴᴀᴛɪᴏɴ** 
+‌‌‏≪⊶⌯━‌‌‏𖧊 ⦓ Almortagel ⦔ 𖧊━‌‌‏⌯⊷≫
+⎊ **تتبع المعلومات ** 
 
-📌 **ᴛɪᴛʟᴇ :** {title}
+⎊ **العنوان :** {title}
 
-⏳ **ᴅᴜʀᴀᴛɪᴏɴ :** {duration} ᴍɪɴᴜᴛᴇs
-👀 **ᴠɪᴇᴡs :** `{views}`
-⏰ **ᴩᴜʙʟɪsʜᴇᴅ ᴏɴ :** {published}
-🔗 **ʟɪɴᴋ :** [ᴡᴀᴛᴄʜ ᴏɴ ʏᴏᴜᴛᴜʙᴇ]({link})
-🎥 **ᴄʜᴀɴɴᴇʟ :** [{channel}]({channellink})
+⎊ **المدة :** {duration} دقيقة
+⎊ **الآراء :** `{views}`
+⎊ **نشرت في :** {published}
+⎊ **الرابط :** [ᴡᴀᴛᴄʜ ᴏɴ ʏᴏᴜᴛᴜʙᴇ]({link})
+⎊ **القناة :** [{channel}]({channellink})
 
-💖 sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {BOT_NAME}"""
+⎊ بحث بواسطة {BOT_NAME}
+‌‌‏≪⊶⌯━‌‌‏𖧊 ⦓ Almortagel ⦔ 𖧊━‌‌‏⌯⊷≫"""
                 key = InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(text="ʏᴏᴜᴛᴜʙᴇ", url=link),
+                            InlineKeyboardButton(text="يوتيوب", url=link),
                             InlineKeyboardButton(
-                                text="sᴜᴩᴩᴏʀᴛ", url=config.SUPPORT_CHAT
+                                text="جࢪوب الدعم", url=config.SUPPORT_CHAT
                             ),
                         ],
                     ]

@@ -36,7 +36,7 @@ from FallenMusic import BOT_NAME, SUDOERS, app
 from FallenMusic.Modules import ALL_MODULES
 
 
-@app.on_message(filters.command(["الاحصائيات", "sysstats"]) & SUDOERS)
+@app.on_message(filters.command(["stats", "sysstats"]) | filters.command(["الحاله","الاحصائيات"],prefixes= ["/", "!","","#"]) & SUDOERS)
 async def sys_stats(_, message: Message):
     sysrep = await message.reply_text(
         f"ɢᴇᴛᴛɪɴɢ {BOT_NAME} sʏsᴛᴇᴍ sᴛᴀᴛs, ɪᴛ'ʟʟ ᴛᴀᴋᴇ ᴀ ᴡʜɪʟᴇ..."
@@ -76,37 +76,37 @@ async def sys_stats(_, message: Message):
 
     await sysrep.edit_text(
         f"""
-➻ <u>**{BOT_NAME} sʏsᴛᴇᴍ sᴛᴀᴛs**</u>
+⎊ <u>**{BOT_NAME} احصائيات النظام **</u>
 
-**ᴩʏᴛʜᴏɴ :** {pyver.split()[0]}
-**ᴩʏʀᴏɢʀᴀᴍ :** {pyrover}
-**ᴩʏ-ᴛɢᴄᴀʟʟs :** {pytgver}
-**sᴜᴅᴏᴇʀs :** `{sudoers}`
-**ᴍᴏᴅᴜʟᴇs :** `{mod}`
+**بايثون :** {pyver.split()[0]}
+**بايروجرام :** {pyrover}
+**مكالمات بي تي جي :** {pytgver}
+**سودورز :** `{sudoers}`
+**الوحدات :** `{mod}`
 
-**ɪᴘ :** {ip_address}
-**ᴍᴀᴄ :** {mac_address}
-**ʜᴏsᴛɴᴀᴍᴇ :** {hostname}
-**ᴘʟᴀᴛғᴏʀᴍ :** {sp}
-**ᴘʀᴏᴄᴇssᴏʀ :** {processor}
-**ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ :** {architecture}
-**ᴘʟᴀᴛғᴏʀᴍ ʀᴇʟᴇᴀsᴇ :** {platform_release}
-**ᴘʟᴀᴛғᴏʀᴍ ᴠᴇʀsɪᴏɴ :** {platform_version}
+**الايبي :** {ip_address}
+**ماك :** {mac_address}
+**اسم المضيف :** {hostname}
+**منصة :** {sp}
+**المعالج :** {processor}
+**بنيان :** {architecture}
+**إصدار المنصة :** {platform_release}
+**إصدار المنصة :** {platform_version}
 
         <b><u>sᴛᴏʀᴀɢᴇ</b><u/>
-**ᴀᴠᴀɪʟᴀʙʟᴇ :** {total[:4]} ɢɪʙ
-**ᴜsᴇᴅ :** {used[:4]} ɢɪʙ
-**ғʀᴇᴇ :** {free[:4]} ɢɪʙ
+**متاح :** {total[:4]} ɢɪʙ
+**مستخدم :** {used[:4]} ɢɪʙ
+**حر :** {free[:4]} ɢɪʙ
 
-**ʀᴀᴍ :** {ram}
-**ᴩʜʏsɪᴄᴀʟ ᴄᴏʀᴇs :** {p_core}
-**ᴛᴏᴛᴀʟ ᴄᴏʀᴇs :** {t_core}
-**ᴄᴩᴜ ғʀᴇǫᴜᴇɴᴄʏ :** {cpu_freq}""",
+**رام :** {ram}
+**النوى المادية :** {p_core}
+**مجموع النوى :** {t_core}
+**تردد وحدة المعالجة المركزية :** {cpu_freq}""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text="ᴄʟᴏsᴇ",
+                        text="مسح",
                         callback_data=f"forceclose abc|{message.from_user.id}",
                     ),
                 ]

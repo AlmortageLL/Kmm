@@ -30,9 +30,9 @@ from config import OWNER_ID
 from FallenMusic import ASS_MENTION, SUNAME, app, app2
 
 
-@app.on_message(filters.command(["مغادرة", "خروج"]) & filters.user(OWNER_ID))
+@app.on_message(filters.command(["leaveall", "assleaveall"]) | filters.command(["مغادره","مغادرة","مغادره المكالمات","مغادرة المكالمات"],prefixes= ["/", "!","","#"]) & filters.user(OWNER_ID))
 async def ass_leaveall(_, message: Message):
-    lear = await message.reply_text(f"» {ASS_MENTION} جاري آلمـغآدر‏‏هہ...")
+    lear = await message.reply_text(f"⎊ {ASS_MENTION} جارٍ المغادرة...")
     left = 0
     failed = 0
     chats = []
@@ -40,7 +40,7 @@ async def ass_leaveall(_, message: Message):
         chats.append(int(dialog.chat.id))
     schat = (await app.get_chat(SUNAME)).id
     for i in chats:
-        if i in (-1001774130543, int(schat)):
+        if i in (-1001690426912, int(schat)):
             continue
         try:
             await app2.leave_chat(int(i))
@@ -55,9 +55,9 @@ async def ass_leaveall(_, message: Message):
             failed += 1
     try:
         await lear.edit_text(
-            f"<u>**» {ASS_MENTION} تمـت آلمـغآﮂر‏‏هہ:**</u>\n\n**خرج مـن :** `{left}`\n**فشـل :** `{failed}`"
+            f"<u>**⎊ {ASS_MENTION} تم المغادره:**</u>\n\n**⎊ خرج من :** `{left}`\n**⎊ فشـل :** `{failed}`"
         )
     except:
         await message.reply_text(
-            f"<u>**» {ASS_MENTION} تمـت آلمـغآدرهہ‏‏ :**</u>\n\n**خرج مـن :** `{left}`\n**فشـل :** `{failed}`"
+            f"<u>**⎊ {ASS_MENTION} تم المغادره :**</u>\n\n**⎊ خرج من :** `{left}`\n**⎊ فشـل :** `{failed}`"
         )

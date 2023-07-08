@@ -32,35 +32,35 @@ def testspeed(m):
     try:
         test = speedtest.Speedtest()
         test.get_best_server()
-        m = m.edit("**⇆ ʀᴜɴɴɪɴɢ ᴅᴏᴡɴʟᴏᴀᴅ sᴩᴇᴇᴅᴛᴇsᴛ...**")
+        m = m.edit("**⇆ جارٍ تشغيل اختبار سرعة التنزيل...**")
         test.download()
-        m = m.edit("**⇆ ʀᴜɴɴɪɴɢ ᴜᴩʟᴏᴀᴅ sᴩᴇᴇᴅᴛᴇsᴛ...**")
+        m = m.edit("**⇆ تشغيل اختبار سرعة التحميل...**")
         test.upload()
         test.results.share()
         result = test.results.dict()
-        m = m.edit("**↻ sʜᴀʀɪɴɢ sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs...**")
+        m = m.edit("**↻ مشاركة نتائج اختبار السرعة...**")
     except Exception as e:
         return m.edit(e)
     return result
 
 
-@app.on_message(filters.command(["فحص", "سرعة"]) & SUDOERS)
+@app.on_message(filters.command(["speedtest", "spt"]) | filters.command(["فحص","السرعة","السرعه","سرعه","سرعة"],prefixes= ["/", "!","","#"]) & SUDOERS)
 async def speedtest_function(_, message):
-    m = await message.reply_text("**» ʀᴜɴɴɪɴɢ sᴩᴇᴇᴅᴛᴇsᴛ...**")
+    m = await message.reply_text("**⎊ تشغيل اختبار السرعة...**")
     loop = asyncio.get_event_loop()
     result = await loop.run_in_executor(None, testspeed, m)
-    output = f"""✯ **sᴩᴇᴇᴅᴛᴇsᴛ ʀᴇsᴜʟᴛs** ✯
+    output = f"""✯ **نتائج اختبار سرعه سبايدر ** ✯
     
-<u>**❥͜͡ᴄʟɪᴇɴᴛ :**</u>
-**» __ɪsᴩ :__** {result['client']['isp']}
-**» __ᴄᴏᴜɴᴛʀʏ :__** {result['client']['country']}
+<u>**⎊ عميل :**</u>
+**⎊ مزود خدمة الإنترنت :** {result['client']['isp']}
+**⎊ الدولة :** {result['client']['country']}
   
-<u>**❥͜͡sᴇʀᴠᴇʀ :**</u>
-**» __ɴᴀᴍᴇ :__** {result['server']['name']}
-**» __ᴄᴏᴜɴᴛʀʏ :__** {result['server']['country']}, {result['server']['cc']}
-**» __sᴩᴏɴsᴏʀ :__** {result['server']['sponsor']}
-**» __ʟᴀᴛᴇɴᴄʏ :__** {result['server']['latency']}  
-**» __ᴩɪɴɢ :__** {result['ping']}"""
+<u>**⎊ سيرفر :**</u>
+**⎊ الاسم :** {result['server']['name']}
+**⎊ الدولة :** {result['server']['country']}, {result['server']['cc']}
+**⎊ راعي :** {result['server']['sponsor']}
+**⎊ وقت الإستجابة :** {result['server']['latency']}  
+**⎊ البنج :** {result['ping']}"""
     msg = await app.send_photo(
         chat_id=message.chat.id, photo=result["share"], caption=output
     )

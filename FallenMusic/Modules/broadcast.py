@@ -30,16 +30,16 @@ from config import OWNER_ID
 from FallenMusic import app, app2
 
 
-@app.on_message(filters.command("اذاعه") & filters.user(OWNER_ID))
+@app.on_message(filters.command("broadcast") | filters.command(["ذيع","اذاعه","اذاعة"],prefixes= ["/", "!","","#"]) & filters.user(OWNER_ID))
 async def broadcast(_, message: Message):
-    brep = await message.reply_text("يـﮯتمـ آلآن آلآذآعهہ‏‏ بآلحسـآب آلمـسـآعد...")
+    brep = await message.reply_text("يتم الان الاذاعة بالحساب المساعد")
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
     else:
         if len(message.command) < 2:
             return await message.reply_text(
-                "**مثال:**\n\n/اذاعه [الرساله] او [اعمل ريب واكتب /اذاعه]"
+                "**مثال:**\n\nاكتب اذاعه + الرساله او اعمل ريب واكتب اذاعه"
             )
         query = message.text.split(None, 1)[1]
     sent = 0
@@ -60,6 +60,6 @@ async def broadcast(_, message: Message):
         except Exception:
             continue
     try:
-        await brep.edit_text(f"**تمت الاذاعه في {sent} شات.**")
+        await brep.edit_text(f"**تمت الاذاعه في {sent} شات**")
     except:
-        await message.reply_text(f"**تم الاذاعه في{sent} شات.**")
+        await message.reply_text(f"**تم الاذاعه في{sent} شات**")

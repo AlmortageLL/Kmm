@@ -28,9 +28,9 @@ from FallenMusic.Helpers.active import get_active_chats
 from FallenMusic.Helpers.inline import close_key
 
 
-@app.on_message(filters.command("المكالمات") & SUDOERS)
+@app.on_message(filters.command("activevc") | filters.command(["المكالمات","النشطه"],prefixes= ["/", "!","","#"]) & SUDOERS)
 async def activevc(_, message: Message):
-    mystic = await message.reply_text("» جآريـﮯ جلب آلمـگآلمـآت...")
+    mystic = await message.reply_text("⎊ جاري جلب المكالمات ⚡")
     chats = await get_active_chats()
     text = ""
     j = 0
@@ -46,10 +46,10 @@ async def activevc(_, message: Message):
             text += f"<b>{j + 1}. {title}</b> [`{x}`]\n"
         j += 1
     if not text:
-        await mystic.edit_text("لآ يـﮯوجد مـگآلمـآت فيـﮯ آلوقت آلحآليـﮯ...")
+        await mystic.edit_text("⎊ لا يـوجد مكالمات في الوقت الحالي")
     else:
         await mystic.edit_text(
-            f"**قآيـمـهہ‏‏ آلمـگآمـآت آل شـغآلهہ‏‏ :**\n\n{text}",
+            f"**قائمة المكالمات الشغالة :**\n\n{text}",
             reply_markup=close_key,
             disable_web_page_preview=True,
         )

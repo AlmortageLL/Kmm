@@ -28,7 +28,7 @@ from FallenMusic import BOT_USERNAME, app, fallendb, pytgcalls
 from FallenMusic.Helpers import _clear_, admin_check, buttons, close_key, gen_thumb
 
 
-@app.on_message(filters.command(["تخطي", "التالي"]) & filters.group)
+@app.on_message(filters.command(["skip", "next"]) | filters.command(["تخطي","التالى","التالي"],prefixes= ["/", "!","","#"]) & filters.group)
 @admin_check
 async def skip_str(_, message: Message):
     try:
@@ -41,7 +41,7 @@ async def skip_str(_, message: Message):
             await _clear_(message.chat.id)
             await pytgcalls.leave_group_call(message.chat.id)
             await message.reply_text(
-                text=f"➻ ال بعدهه 🥺\n│ \n ال غيرها : {message.from_user.mention} 🥀\n\n**» فيش اغاني** {message.chat.title}, **طب سلام انا**",
+                text=f"⎊ الـتـالـي ⚡\n \n⎊ بواسطة : {message.from_user.mention} 🥀\n\n**⎊ مفيش اغاني** {message.chat.title}, **🕷**",
                 reply_markup=close_key,
             )
         except:
@@ -66,12 +66,12 @@ async def skip_str(_, message: Message):
             return await pytgcalls.leave_group_call(message.chat.id)
 
         await message.reply_text(
-            text=f"➻ ➻ ال بعدهه 🥺\n│ \n ال غيرها : {message.from_user.mention} 🥀\n\n**» فيش اغاني** {message.chat.title}, **طب سلام انا**",
+            text=f"⎊ الـتـالي ⚡\n \n⎊ بواسطة : {message.from_user.mention} 🥀\n\n**⎊ مفيش اغاني** {message.chat.title}, **🕷**",
             reply_markup=close_key,
         )
         img = await gen_thumb(videoid, user_id)
         return await message.reply_photo(
             photo=img,
-            caption=f"**➻ اشتغلت**\n\n‣ **العنوان :** [{title[:27]}](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n‣ **المدة :** `{duration}` الدقايق\n‣ **ال عاوزها :** {req_by}",
+            caption=f"‌‌‏‌‌‏‌‌‏≪⊶⌯━‌‌‏♢ ⦓ SOURCE ALMORTAGEL ⦔ ♢━‌‌‏⌯⊷≫\n**⎊ تـم الـتـشـغـيـل ✅**\n\n⎊ **العنوان :** [{title[:27]}](https://t.me/{BOT_USERNAME}?start=info_{videoid})\n⎊ **المدة :** `{duration}` دقيقه\n⎊ **بواسطه :** {req_by}\n‌‌‏‌‌‏≪⊶⌯━‌‌‏♢ ⦓ SOURCE ALMORTAGEL ⦔ ♢━‌‌‏⌯⊷≫",
             reply_markup=buttons,
         )

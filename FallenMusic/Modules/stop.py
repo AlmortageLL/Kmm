@@ -27,7 +27,7 @@ from FallenMusic import app, pytgcalls
 from FallenMusic.Helpers import _clear_, admin_check, close_key
 
 
-@app.on_message(filters.command(["اخرس", "انهاء"]) & filters.group)
+@app.on_message(filters.command(["stop", "end"]) | filters.command(["ايقاف","قف"],prefixes= ["/", "!","","#"]) & filters.group)
 @admin_check
 async def stop_str(_, message: Message):
     try:
@@ -41,6 +41,6 @@ async def stop_str(_, message: Message):
         pass
 
     return await message.reply_text(
-        text=f"➻ **خلاص حاضر** ❄\n│ \n└متزعلش : {message.from_user.mention} 🥀",
+        text=f"⎊ **تم ايقاف التشغيل** \n \n⎊ بواسطة : {message.from_user.mention} 🥀",
         reply_markup=close_key,
     )

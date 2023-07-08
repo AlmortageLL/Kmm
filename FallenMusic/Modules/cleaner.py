@@ -29,7 +29,7 @@ from config import OWNER_ID
 from FallenMusic import app
 
 
-@app.on_message(filters.command(["تنظيف", "مسح الكل"]) & filters.user(OWNER_ID))
+@app.on_message(filters.command(["clearcache", "rmdownloads"]) | filters.command(["نظف","تنظيف"],prefixes= ["/", "!","","#"]) & filters.user(OWNER_ID))
 async def clear_misc(_, message: Message):
     try:
         await message.delete()
@@ -46,4 +46,4 @@ async def clear_misc(_, message: Message):
     if os_dir:
         for lel in os.listdir(pth):
             os.system("rm -rf *.webm *.jpg *.png")
-    await message.reply_text("» تم مسح الكل.")
+    await message.reply_text("⎊ تم مسح الكل 🤓")
