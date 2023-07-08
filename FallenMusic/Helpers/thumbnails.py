@@ -296,7 +296,7 @@ async def gen_qthumb(videoid, user_id):
         try:
             draw.text(
                 (455, 25),
-                "ADDED TO QUEUE",
+                "ALMORTAGEL",
                 fill="white",
                 stroke_width=5,
                 stroke_fill="black",

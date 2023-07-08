@@ -26,7 +26,7 @@ import config
 from FallenMusic import BOT_USERNAME
 
 close_key = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="✯ ᴄʟᴏsᴇ ✯", callback_data="close")]]
+    [[InlineKeyboardButton(text="• مسح •", callback_data="close")]]
 )
 
 
@@ -34,9 +34,12 @@ buttons = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(text="▷", callback_data="resume_cb"),
-            InlineKeyboardButton(text="II", callback_data="pause_cb"),
+            InlineKeyboardButton(text="ll", callback_data="pause_cb"),
             InlineKeyboardButton(text="‣‣I", callback_data="skip_cb"),
             InlineKeyboardButton(text="▢", callback_data="end_cb"),
+            ],
+            [
+            InlineKeyboardButton("⦓ SOURCE ALMORTAGEL ⦔", url=f"https://t.me/AlmortagelTech"),
         ]
     ]
 )
@@ -45,20 +48,20 @@ buttons = InlineKeyboardMarkup(
 pm_buttons = [
     [
         InlineKeyboardButton(
-            text="ڞڣڼي ﭾڕوٍبـڴ",
+            text="‹ اضف البوت في مجموعتك ›",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         )
     ],
-    [InlineKeyboardButton(text="آلآوٍآ۾ڕ", callback_data="fallen_help")],
+    [InlineKeyboardButton(text="• اوامࢪ التشغيل •", callback_data="fallen_help")],
     [
-        InlineKeyboardButton(text="❄ ﭰڼآةّ آلڛوٍڕڛ ❄", url=config.SUPPORT_CHANNEL),
-        InlineKeyboardButton(text="✨ ﭾڕوٍبـ آل۾ڛآ؏ ✨", url=config.SUPPORT_CHAT),
+        InlineKeyboardButton(text="• سوࢪس المرتجل •", url=config.SUPPORT_CHANNEL),
+        InlineKeyboardButton(text="• جࢪوب الدعم •", url=config.SUPPORT_CHAT),
     ],
     [
         InlineKeyboardButton(
-            text="☁️ آلهہﭰڕ زيڼ ☁️", url="https://t.me/devpokemon"
+            text="• مطوࢪ السورس •", url="https://t.me/Almortagel_12"
         ),
-        InlineKeyboardButton(text="🥀  ۾آلڴ آلبـوٍٺ 🥀", user_id=config.OWNER_ID),
+        InlineKeyboardButton(text="• مالك البوت •", user_id=config.OWNER_ID),
     ],
 ]
 
@@ -66,19 +69,19 @@ pm_buttons = [
 gp_buttons = [
     [
         InlineKeyboardButton(
-            text="ڞڣڼي ﭾڕوٍبـڴ",
+            text="‹ اضف البوت في مجموعتك ›",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         )
     ],
     [
-        InlineKeyboardButton(text="❄ ﭰڼآةّ آلڛوٍڕڛ ❄", url=config.SUPPORT_CHANNEL),
-        InlineKeyboardButton(text="✨ ﭾڕوٍبـ آل۾ڛآ؏ ✨", url=config.SUPPORT_CHAT),
+        InlineKeyboardButton(text="• سوࢪس المرتجل •", url=config.SUPPORT_CHANNEL),
+        InlineKeyboardButton(text="• جࢪوب الدعم •", url=config.SUPPORT_CHAT),
     ],
     [
         InlineKeyboardButton(
-            text="☁️ آلهہﭰڕ زيڼ ☁️", url="https://t.me/devpokemon"
+            text="• مطوࢪ السورس •", url="https://t.me/Almortagel_12"
         ),
-        InlineKeyboardButton(text="🥀  ۾آلڴ آلبـوٍٺ 🥀", user_id=config.OWNER_ID),
+        InlineKeyboardButton(text="• مالك البوت •", user_id=config.OWNER_ID),
     ],
 ]
 
@@ -86,25 +89,25 @@ gp_buttons = [
 helpmenu = [
     [
         InlineKeyboardButton(
-            text="ᴇᴠᴇʀʏᴏɴᴇ",
+            text="• اوامࢪ التشغيل •",
             callback_data="fallen_cb help",
         )
     ],
     [
-        InlineKeyboardButton(text="آوٍآ۾ڕ آل۾طوٍڕ", callback_data="fallen_cb sudo"),
-        InlineKeyboardButton(text="۾آلڴ آلبـوٍٺ", callback_data="fallen_cb owner"),
+        InlineKeyboardButton(text="• اوامࢪ المطور •", callback_data="fallen_cb sudo"),
+        InlineKeyboardButton(text="• اوامࢪ المالك •", callback_data="fallen_cb owner"),
     ],
     [
-        InlineKeyboardButton(text="ڕﭾوٍ؏", callback_data="fallen_home"),
-        InlineKeyboardButton(text="آۼلآﭰ", callback_data="close"),
+        InlineKeyboardButton(text="• ࢪجوع •", callback_data="fallen_home"),
+        InlineKeyboardButton(text="• مسح •", callback_data="close"),
     ],
 ]
 
 
 help_back = [
-    [InlineKeyboardButton(text="✨ ﭾڕوٍبـ آل۾ڛآ؏ ✨", url=config.SUPPORT_CHAT)],
+    [InlineKeyboardButton(text="• جࢪوب الدعم •", url=config.SUPPORT_CHAT)],
     [
-        InlineKeyboardButton(text="ڕﭾوٍ؏", callback_data="fallen_help"),
-        InlineKeyboardButton(text="آۼلآﭰ", callback_data="close"),
+        InlineKeyboardButton(text="• ࢪجوع •", callback_data="fallen_help"),
+        InlineKeyboardButton(text="• مسح •", callback_data="close"),
     ],
 ]
